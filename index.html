@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <title>[Mock] Task Manager App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wireframe-container">
+    <!-- Mockup Header -->
+    <header class="wireframe-header">
+      <div class="mock-badge">WIREFRAME MOCKUP v0.1</div>
+      <h1>Task Manager App</h1>
+      <p class="mock-subtext">// Baseline frontend mock for SDLC demonstrations and future enhancements</p>
+    </header>
+
+    <!-- Metrics / Status Row -->
+    <section class="wireframe-panel stats-panel" aria-label="Task statistics">
+      <div class="stat-box">
+        <span class="stat-label">TOTAL</span>
+        <span class="stat-value" id="stat-total">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">PENDING</span>
+        <span class="stat-value" id="stat-pending">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">COMPLETED</span>
+        <span class="stat-value" id="stat-completed">0</span>
+      </div>
+    </section>
+
+    <!-- Task Creation Form Section -->
+    <section class="wireframe-panel" aria-labelledby="form-heading">
+      <h2 id="form-heading" class="panel-title">[ + Create New Task ]</h2>
+      <form id="new-task-form" class="task-form" novalidate>
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label for="task-title-input">Task Title *</label>
+            <input 
+              type="text" 
+              id="task-title-input" 
+              name="title" 
+              placeholder="e.g. Design user authentication flow" 
+              maxlength="120" 
+              required
+            >
+            <span class="input-hint" id="title-error"></span>
+          </div>
+
+          <div class="form-group flex-1">
+            <label for="task-priority-select">Priority</label>
+            <select id="task-priority-select" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group flex-1">
+            <label for="task-category-select">Category</label>
+            <select id="task-category-select" name="category">
+              <option value="Feature" selected>Feature</option>
+              <option value="Bug">Bug</option>
+              <option value="SDLC / CI">SDLC / CI</option>
+              <option value="Docs">Docs</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="add-task-btn" class="btn btn-primary">[ Add Task ]</button>
+          <button type="reset" id="reset-form-btn" class="btn btn-secondary">[ Clear ]</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Task List & Filters Section -->
+    <section class="wireframe-panel" aria-labelledby="list-heading">
+      <div class="panel-header-row">
+        <h2 id="list-heading" class="panel-title">[ Task List ]</h2>
+        <!-- Filters -->
+        <div class="filter-controls" role="group" aria-label="Task status filters">
+          <button type="button" class="btn filter-btn active" data-filter="all">All</button>
+          <button type="button" class="btn filter-btn" data-filter="pending">Pending</button>
+          <button type="button" class="btn filter-btn" data-filter="completed">Completed</button>
+        </div>
+      </div>
+
+      <!-- Task items list container -->
+      <ul id="task-list" class="task-list" aria-live="polite">
+        <!-- Rendered dynamically by app.js using secure DOM methods -->
+      </ul>
+
+      <div id="empty-state" class="empty-state hidden">
+        <p>No tasks found matching the current filter.</p>
+      </div>
+    </section>
+
+    <!-- Feedback Notice Banner -->
+    <div id="notification-banner" class="notification-banner hidden" role="status">
+      <span id="notification-text"></span>
+    </div>
+
+    <!-- Mock Footer -->
+    <footer class="wireframe-footer">
+      <p>Mock Web Page Prototype &bull; Pure HTML5 / CSS3 / Vanilla JS &bull; No Backend Required</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
